@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard Financeiro</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+</head>
+
+<body class="text-gray-900 bg-gray-100 dark:text-white dark:bg-gray-900">
+
+    <main class="px-30 py-20">
+
+        <div>
+            <h1 class="mb-6 font-bold text-4xl">
+                Dashboard Financeiro
+            </h1>
+
+            <select
+                name="tema"
+                id="tema"
+                class="bg-white text-gray-900 border border-gray-300 rounded-md px-3 py-1 dark:bg-gray-700 dark:text-white dark:border-gray-600"
+                onchange="alterarModo()"
+            >
+                <option value="dark" selected>Dark mode</option>
+                <option value="light">Light mode</option>
+            </select>
+        </div>
+
+
+        <!-- RESUMO -->
+
+        <section class="flex items-center justify-between text-2xl font-semibold mt-10 gap-6">
+
+            <div class="bg-white dark:bg-gray-700 w-1/4 p-6 rounded-2xl shadow-md">
+                <h2>Saldo</h2>
+
+                <span
+                    class="text-blue-500 dark:text-blue-400"
+                    id="saldo"
+                >
+                    R$ 0,00
+                </span>
+            </div>
+
+
+            <div class="bg-white dark:bg-gray-700 w-1/4 p-6 rounded-2xl shadow-md">
+                <h2>Entradas</h2>
+
+                <span
+                    class="text-green-500 dark:text-green-400"
+                    id="entrada"
+                >
+                    R$ 0,00
+                </span>
+            </div>
+
+
+            <div class="bg-white dark:bg-gray-700 w-1/4 p-6 rounded-2xl shadow-md">
+                <h2>Saídas</h2>
+
+                <span
+                    class="text-red-500"
+                    id="saida"
+                >
+                    R$ 0,00
+                </span>
+            </div>
+
+        </section>
+
+
+        <!-- NOVA TRANSAÇÃO -->
+
+        <section>
+
+            <h2 class="my-6 font-bold text-3xl">
+                Nova Transação
+            </h2>
+
+
+            <form
+                class="bg-white dark:bg-gray-700 rounded-2xl p-10 flex items-center justify-between gap-10 shadow-md"
+            >
+
+                <div class="flex w-full gap-5 items-center">
+
+                    <label for="desc">
+                        Descrição
+                    </label>
+
+                    <input
+                        id="desc"
+                        type="text"
+                        class="rounded-md w-full bg-gray-50 dark:bg-gray-500 border border-gray-300 dark:border-transparent text-gray-900 dark:text-white py-1 px-2"
+                    >
+
+                </div>
+
+
+                <div class="flex w-[50%] gap-5 items-center">
+
+                    <label for="valor">
+                        Valor
+                    </label>
+
+                    <input
+                        id="valor"
+                        type="number"
+                        class="rounded-md w-full bg-gray-50 dark:bg-gray-500 border border-gray-300 dark:border-transparent text-gray-900 dark:text-white py-1 px-2"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label for="tipo"></label>
+
+                    <select
+                        name="tipo"
+                        id="tipo"
+                        class="bg-gray-50 text-gray-900 border border-gray-300 rounded-md px-3 py-1 dark:bg-gray-700 dark:text-white dark:border-gray-600"
+                    >
+                        <option value="entrada">
+                            Entrada
+                        </option>
+
+                        <option value="saida">
+                            Saída
+                        </option>
+                    </select>
+
+                </div>
+
+
+                <button
+                    class="bg-blue-800 hover:bg-blue-700 text-white px-10 py-2 rounded-xl"
+                    type="button"
+                    onclick="addTransacao()"
+                >
+                    Adicionar
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- TRANSAÇÕES -->
+
+        <section class="mt-10">
+
+            <h2 class="mb-6 font-bold text-3xl">
+                Transações
+            </h2>
+
+
+            <div
+                id="listaTransacoes"
+                class="flex flex-col gap-3"
+            >
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
